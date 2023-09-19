@@ -1,0 +1,16 @@
+image: giant-app
+---
+apiVersion: kbld.k14s.io/v1alpha1
+kind: Config
+#! build image
+sources:
+  - image: giant-app
+    path: .
+    pack:
+      build:
+        builder: paketobuildpacks/builder
+#! publish (push) image
+destinations:
+  - image: giant-app
+    newImage: taplab.azurecr.io/packaging-demo/giant-app
+    tags: [latest, 3.5.1]
